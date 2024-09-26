@@ -9,9 +9,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Get('/books')
-  getAny(): string {
-    return 'This is Book Page';
-  }
 }
