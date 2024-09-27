@@ -1,20 +1,15 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import { BookService } from './book.service';
-import { CreateBookDto } from './dto/create-book.dto';
 
 @Controller('book')
 export class BookController {
-    constructor(private bookService: BookService) {}
+    constructor(private readonly bookService: BookService) {}
 
     @Get('/')
-
-    getAllBooks() {
-        return this.bookService.getAllBooks();
-    }
-
-    @Post('/create')
-
-    createBook(@Body() bookData: CreateBookDto) {
-        return { data: bookData };
+    @Render('book')
+    async getAllBooks() {
+        return await this.bookService
+                   .findAllBooks()
+                   .then((result) => result ? { books: result } : { books: [] });
     }
 }

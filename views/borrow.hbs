@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Books</title>
+</head>
+<body>
+    <form action="/" method="POST">
+        <span>Member Name</span>
+        <select name="name" id="name">
+            {{#each members}}
+                {{#each this}}
+                    <option value="{{ id }}">{{ name }}</option>
+                {{/each}}
+            {{/each}}
+        </select>
+        <br>
+        <span>Available Books</span>
+        {{#each books}}
+            {{#each this}}
+                <input type="checkbox" name="{{ code }}" id="{{ id }}" value="{{ id }}">
+                <label for="{{ id }}">{{ title }}</label>
+            {{/each}}
+        {{/each}}
+    </form>
+</body>
+</html>

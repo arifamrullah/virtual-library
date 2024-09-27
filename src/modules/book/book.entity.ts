@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Member } from "../member/member.entity";
 
 @Entity('books')
 
@@ -17,4 +18,7 @@ export class Book extends BaseEntity {
 
     @Column({ type: 'int' })
     stock: number;
+
+    @ManyToOne(() => Member, (member) => member.books)
+    member: Member;
 }

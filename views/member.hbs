@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members List</title>
+</head>
+<body>
+    <ul>
+        {{#each members}}
+            <li> {{ code }} </li>
+            <li> {{ name }} </li>
+            <li> {{ isPenalty }} </li>
+        {{/each}}
+    </ul>
+</body>
+</html>
