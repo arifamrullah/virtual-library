@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrow Books</title>
 </head>
+<a href="/">Home</a>
+<br>
+<br>
 <body>
-    <form action="/" method="POST">
+    <form action="" method="POST">
         <span>Member Name</span>
-        <select name="name" id="name">
+        <select name="memberId">
             {{#each members}}
                 {{#each this}}
                     <option value="{{ id }}">{{ name }}</option>
@@ -16,13 +19,18 @@
             {{/each}}
         </select>
         <br>
+        <br>
         <span>Available Books</span>
+        <br>
         {{#each books}}
             {{#each this}}
-                <input type="checkbox" name="{{ code }}" id="{{ id }}" value="{{ id }}">
-                <label for="{{ id }}">{{ title }}</label>
+                <input type="checkbox" name="id[]" value="{{ id }}">
+                <label for="{{ id }}">{{ title }} ({{ id }})</label>
+                <br>
             {{/each}}
         {{/each}}
+        <br>
+        <input type="submit">
     </form>
 </body>
 </html>

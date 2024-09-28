@@ -8,9 +8,14 @@
 <body>
     <ul>
         {{#each members}}
-            <li> {{ code }} </li>
             <li> {{ name }} </li>
             <li> {{ isPenalty }} </li>
+            <ul>
+                {{#each books}}
+                    <li> {{ title }} </li>
+                {{/each}}
+            </ul>
+            <br>
         {{/each}}
     </ul>
 </body>

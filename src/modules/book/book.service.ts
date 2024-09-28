@@ -7,7 +7,16 @@ import { Repository } from 'typeorm';
 export class BookService {
     constructor(@InjectRepository(Book) private readonly bookRepository: Repository<Book>) {}
 
-    findAllBooks(): Promise<Book[]> {
-        return this.bookRepository.find();
+    async findAll(): Promise<Book[]> {
+        return await this.bookRepository.find();
+    }
+
+    async findOne(id: number): Promise<Book> {
+        return await this.bookRepository.findOne({ where : { id } });
+    }
+
+    async update(id: number, book: Book): Promise<Book> {
+        await this.bookRepository.update(id, book);
+        return await this.bookRepository.findOne({ where : { id } });
     }
 }

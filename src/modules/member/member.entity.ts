@@ -14,6 +14,12 @@ export class Member extends BaseEntity {
     name: string;
 
     @Column({
+        type: 'date',
+        nullable: true
+    })
+    borrow_date: Date;
+
+    @Column({
         type: 'boolean',
         default: false
     })
@@ -25,6 +31,6 @@ export class Member extends BaseEntity {
     })
     penalty_date: Date;
 
-    @OneToMany(() => Book, (books) => books.member)
-    books: Book;
+    @OneToMany(() => Book, (book) => book.member)
+    books: Book[];
 }
